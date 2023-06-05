@@ -7,7 +7,7 @@ pipeline {
   stages {
        stage('clone') {
       steps {
-        git 'https://github.com/AamirKhan511/Ansible_playbook.git'
+        git 'git@github.com:AamirKhan511/Ansible_playbook.git'
            sh '''
           #!/bin/bash
           cd /etc/ansible/
