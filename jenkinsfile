@@ -1,4 +1,4 @@
-def application = "devops"
+def application = "ansible-playbook"
 pipeline {
   agent any
   environment {
@@ -17,6 +17,5 @@ pipeline {
       }
     }
   }
-
 }
 
