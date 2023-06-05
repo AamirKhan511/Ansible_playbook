@@ -11,16 +11,12 @@ pipeline {
            sh '''
           #!/bin/bash
           cd /etc/ansible/
-          ansible-playbook -i ansible.cfg nginx-playbook.yml -b
+          sudo ansible-playbook -i ansible.cfg nginx-playbook.yml -b
 
           '''
       }
     }
   }
-  post {
-    always {
-      sh 'sudo docker logout'
-    }
-  }
+
 }
 
