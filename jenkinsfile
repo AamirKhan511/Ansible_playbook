@@ -5,17 +5,21 @@ pipeline {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub')
   }
   stages {
-       stage('clone') {
-      steps {
-        git 'git@github.com:AamirKhan511/Ansible_playbook.git'
-           sh '''
-          #!/bin/bash
-          cd /etc/ansible/
-          sudo ansible-playbook -i ansible.cfg nginx-playbook.yml -b
+        stage('clone') {
+           steps {
+             git 'https://github.com/AamirKhan511/Ansible_playbook.git'
+          }
+        }
+       stage('playbook') {
+           steps {
+             sh '''
+             #!/bin/bash
+             cd /etc/ansible/
+             sudo ansible-playbook -i ansible.cfg nginx-playbook.yml -b
 
-          '''
-      }
-    }
+              '''
+          }
+        }
   }
 }
 
