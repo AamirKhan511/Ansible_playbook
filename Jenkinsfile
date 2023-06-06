@@ -4,7 +4,7 @@ pipeline {
 
   stages {
         stage('clone') {
-          step {
+          steps {
           script{
             checkout([$class: 'GitSCM', branches: [[name: 'master']], userRemoteConfigs: [[url: 'https://github.com/AamirKhan511/Ansible_playbook.git']]])
             sh '''
