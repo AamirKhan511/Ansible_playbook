@@ -4,6 +4,7 @@ pipeline {
 
   stages {
         stage('clone') {
+          step {
           script{
             checkout([$class: 'GitSCM', branches: [[name: 'master']], userRemoteConfigs: [[url: 'https://github.com/AamirKhan511/Ansible_playbook.git']]])
             sh '''
@@ -11,6 +12,7 @@ pipeline {
             cd /etc/ansible/
              sudo ansible-playbook -i ansible.cfg nginx-playbook.yml -b
             '''
+        }
         }
         }
   }
