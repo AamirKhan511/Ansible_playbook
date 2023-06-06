@@ -1,24 +1,17 @@
 def application = "ansible-playbook"
 pipeline {
   agent any
-  environment {
-    DOCKERHUB_CREDENTIALS = credentials('dockerhub')
-  }
+
   stages {
         stage('clone') {
-           steps {
-             git 'https://github.com/AamirKhan511/Ansible_playbook.git'
-          }
-        }
-       stage('playbook') {
-           steps {
-             sh '''
-             #!/bin/bash
-             cd /etc/ansible/
+          script{
+            checkout([$class: 'GitSCM', branches: [[name: 'master']], userRemoteConfigs: [[url: 'https://github.com/AamirKhan511/Ansible_playbook.git']]])
+            sh '''
+          #!/bin/bash
+            cd /etc/ansible/
              sudo ansible-playbook -i ansible.cfg nginx-playbook.yml -b
-
-              '''
-          }
+            '''
+        }
         }
   }
 }
