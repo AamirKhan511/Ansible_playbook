@@ -6,7 +6,7 @@ pipeline {
         stage('clone') {
           steps {
           script{
-            checkout([$class: 'GitSCM', branches: [[name: 'master']], userRemoteConfigs: [[url: 'https://github.com/AamirKhan511/Ansible_playbook.git']]])
+            checkout([$class: 'GitSCM', branches: [[name: 'master']], userRemoteConfigs: [[url: 'https://github.com/AamirKhan511/Ansible_playbook.git']]],extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '/home/ubuntu/ansible_playbooks']])
             sh '''
           #!/bin/bash
             cd /etc/ansible/
