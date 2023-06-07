@@ -15,13 +15,13 @@ pipeline {
     [url: 'https://github.com/AamirKhan511/Ansible_playbook.git']
   ],
   extensions: [
-    [$class: 'RelativeTargetDirectory', relativeTargetDir: '/home/ubuntu/ansible_playbooks/checkoutdirectory']
+    [$class: 'RelativeTargetDirectory', relativeTargetDir: '/etc/checkoutdirectory']
   ]
 ])
             sh '''
           #!/bin/bash
-            cd /etc/ansible/
-             sudo ansible-playbook -i ansible.cfg nginx-playbook.yml -b
+            cd /etc/checkoutdirectory/
+              ansible-playbook -i ansible.cfg nginx-playbook.yml -b
             '''
         }
         }
