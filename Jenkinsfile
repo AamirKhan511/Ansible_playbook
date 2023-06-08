@@ -30,7 +30,6 @@ environment {
             echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
             sudo docker push aamir335/nginx:${docker_tag}
             ansible-playbook -i ansible.cfg nginx-playbook.yml -b --extra-vars "imagename=${docker_tag}"
-            docker rmi aamir335/ngnix:${docker_tag} -1 -f || true
           '''
         }
         }
