@@ -27,7 +27,6 @@
       name: my-nginx-container
       image:  "aamir335/nginx:{{ imagename }}"
       state: started
-      detached: yes
       ports:
       - "80:80"
       
