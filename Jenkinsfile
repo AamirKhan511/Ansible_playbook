@@ -23,8 +23,7 @@ environment {
             sh '''
           #!/bin/bash
             cd /etc/checkoutdirectory/
-            sudo docker build -t aamir335/nginx:${BUILD_NUMBER} .
-            input message: 'Do you want to approve the deployment?', ok: 'Yes'
+            sudo docker build -t aamir335/nginx:${BUILD_NUMBER} 
             echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
             sudo docker push aamir335/nginx:${BUILD_NUMBER}
             docker rm -f \$(docker ps -a -f name=ansible-playbook -q) || true
