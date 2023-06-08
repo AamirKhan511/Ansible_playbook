@@ -23,7 +23,7 @@ environment {
             sh '''
           #!/bin/bash
             cd /etc/checkoutdirectory/
-            docker build -t aamir335/nginx:${BUILD_NUMBER} .
+            sudo docker build -t aamir335/nginx:${BUILD_NUMBER} .
             input message: 'Do you want to approve the deployment?', ok: 'Yes'
             echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
             sudo docker push aamir335/nginx:${BUILD_NUMBER}
