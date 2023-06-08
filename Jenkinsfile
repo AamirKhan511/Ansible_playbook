@@ -31,7 +31,7 @@ environment {
             sudo docker push aamir335/nginx:${BUILD_NUMBER}
                #ansible-palybook nginx-playbook.yml
             docker rm -f \$(docker ps -a -f name=aamir335/nginx -q) || true
-              #ansible-playbook -i ansible.cfg nginx-playbook.yml -b
+              ansible-playbook -i ansible.cfg nginx-playbook.yml -b
           '''
         }
         }
