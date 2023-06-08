@@ -30,8 +30,4 @@
       ports:
           - "80:80"
 
-  - name: Start Service
-    service:
-      name: nginx
-      state: restarted
-      enabled: yes
+  
