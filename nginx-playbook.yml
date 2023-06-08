@@ -29,7 +29,7 @@
       state: started
       ports:
       - "80:80"
-      command: nginx -g "daemon off;"
+      
       
 
   
