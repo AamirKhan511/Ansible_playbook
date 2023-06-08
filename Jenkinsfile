@@ -28,10 +28,10 @@ environment {
           echo " Starting build docker image"
             sudo docker build -t aamir335/nginx:${docker_tag} .  || exit 1
             echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
-            sudo docker push aamir335/nginx:${BUILD_NUMBER}
+            sudo docker push aamir335/nginx:${docker_tag}
                #ansible-palybook nginx-playbook.yml
-            docker rm -f \$(docker ps -a -f name=aamir335/nginx -q) || true
-              ansible-playbook -i ansible.cfg nginx-playbook.yml -b
+            docker rm -f \$(docker ps -a -f name=ansible-playbook -q) || true
+             ansible-playbook -i ansible.cfg nginx-playbook.yml -b --extra-vars "imagename=${docker_tag}"
           '''
         }
         }
