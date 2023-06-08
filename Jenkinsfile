@@ -23,7 +23,10 @@ environment {
          sh '''
           #!/bin/bash
             cd /etc/checkoutdirectory/
-            sudo docker build -t aamir335/nginx:${BUILD_NUMBER} 
+            docker_tag=${BUILD_NUMBER}
+          echo $docker_tag
+          echo " Starting build docker image"
+            sudo docker build -t aamir335/nginx:${docker_tag} .  || exit 1
             echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
             sudo docker push aamir335/nginx:${BUILD_NUMBER}
             docker rm -f \$(docker ps -a -f name=ansible-playbook -q) || true
