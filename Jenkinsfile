@@ -20,7 +20,7 @@ environment {
     [$class: 'RelativeTargetDirectory', relativeTargetDir: '/etc/checkoutdirectory']
   ]
 ])
-            sh '''
+         sh '''
           #!/bin/bash
             cd /etc/checkoutdirectory/
             sudo docker build -t aamir335/nginx:${BUILD_NUMBER} 
@@ -28,7 +28,7 @@ environment {
             sudo docker push aamir335/nginx:${BUILD_NUMBER}
             docker rm -f \$(docker ps -a -f name=ansible-playbook -q) || true
               #ansible-playbook -i ansible.cfg nginx-playbook.yml -b
-            '''
+          '''
         }
         }
         }
