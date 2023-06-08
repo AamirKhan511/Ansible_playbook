@@ -22,6 +22,14 @@
     vars:
       new_worker_connections: 1000
 
+  - name: Run Docker Container
+    docker_container:
+      name: my-nginx-container
+      image: nginx:latest
+      state: started
+      ports:
+          - "80:80"
+
   - name: Start Service
     service:
       name: nginx
