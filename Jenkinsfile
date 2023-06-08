@@ -30,29 +30,14 @@ environment {
             echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
             sudo docker push aamir335/nginx:${BUILD_NUMBER}
             ansible-galaxy collection install community.aws
-            docker rm -f \$(docker ps -a -f name=ansible-playbook -q) || true
+            docker rm -f \$(docker ps -a -f name=aamir335/nginx -q) || true
+            ansible-palybook nginx-playbook.yml
            
               #ansible-playbook -i ansible.cfg nginx-playbook.yml -b
           '''
         }
         }
         }
-stage('Run Ansible playbook') {
-  steps {
-    ansiblePlaybook(
-      playbook: 'nginx-playbook.yml',
-      inventory: 'ansible.cfg',
-      become: true
-    )
-  }
-}
 
-stage('Run Docker container') {
-  steps {
-    script {
-      docker.image('aamir335/nginx:${BUILD_NUMBER}').run()
-    }
-  }
-}
   }
 }
