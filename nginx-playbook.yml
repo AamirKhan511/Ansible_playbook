@@ -25,7 +25,7 @@
   - name: Run Docker Container
     docker_container:
       name: my-nginx-container
-      image: nginx:latest
+      image:  "aamir335/nginx:{{ imagename }}"
       state: started
       ports:
           - "80:80"
